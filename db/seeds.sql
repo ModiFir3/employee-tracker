@@ -1,29 +1,29 @@
-INSERT INTO department (id, name)
+INSERT INTO department (name)
 VALUES
-(1,'Sales'),
-(2, 'Engineering'),
-(3, 'Finance');
+('Sales'),
+('Engineering'),
+('Finance');
 
-INSERT INTO role (id, title, salary, department_id)
+INSERT INTO role (title, salary, department_id)
 VALUES
-(1, 'Sales person', 30000, 1),
-(2, 'Sales Manager', 35000, 1),
-(3, 'Software Engineer', 40000, 2),
-(4, 'Head Software Engineer', 45000, 2),
-(5, 'Accountant', 50000, 3),
-(6, 'Accountant Manager', 45000, 3);
+('Sales person', 30000, 1),
+('Sales Manager', 35000, 1),
+('Software Engineer', 40000, 2),
+('Head Software Engineer', 45000, 2),
+('Accountant', 50000, 3),
+('Accountant Manager', 45000, 3);
 
 -- dont forget to add back manager_id
-INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-(1, 'James', 'Fraser', 1, 2),
-(2, 'Jack', 'London', 3, 4),
-(3, 'Robert', 'Bruce', 2, null),
-(4, 'Peter', 'Greenaway', 1, 2),
-(5, 'Derek', 'Jarman', 5, 6),
-(6, 'Paolo', 'Pasolini', 6, null),
-(7, 'Heathcote', 'Williams', 3, 4),
-(8, 'Sandy', 'Powell', 4, null),
-(9, 'Emil', 'Zola', 5, 6),
-(10, 'Sissy', 'Coalpits', 1, 2);
+('James', 'Fraser', 2, null),
+('Jack', 'London', 4, null),
+('Robert', 'Bruce', 6, null),
+('Peter', 'Greenaway', 1, 1),
+('Derek', 'Jarman', 1, 1),
+('Paolo', 'Pasolini', 3, 2),
+('Heathcote', 'Williams', 3, 2),
+('Sandy', 'Powell', 1, 1),
+('Emil', 'Zola', 5, 3),
+('Sissy', 'Coalpits', 5, 3);
 
