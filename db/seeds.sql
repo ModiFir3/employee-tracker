@@ -11,7 +11,7 @@ VALUES
 ('Software Engineer', 40000, 2),
 ('Head Software Engineer', 45000, 2),
 ('Accountant', 50000, 3),
-('Accountant Manager', 45000, 3);
+('Accountant Manager', 55000, 3);
 
 -- dont forget to add back manager_id
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
