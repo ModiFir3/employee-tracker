@@ -35,10 +35,10 @@ const menu = () => {
                 addDepartment()
             }
             else if (choice === 'Add Role') {
-
+                addRole()
             }
             else if (choice === 'Add Employee') {
-
+                addEmployee()
             }
             else if (choice === 'Update Employees') {
 
@@ -97,10 +97,56 @@ const addDepartment = () => {
         .then((answers) => {
             let { department } = answers
             db.promise().query(`INSERT INTO department (name) VALUES ('${department}')`);
-            menu()
+            viewDepartments();
         })
         .catch(console.log)
 }
 
+const addRole = () => {
+    db.promise().query('SELECT * FROM department')
+    .then(([rows]) => {
+        const dept = rows.map(({ name, id }) => ({ name: name, value: id }));
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'title',
+                message: 'What is the name of the role for the employee?'
+            },
+            {
+                type: 'input',
+                name: 'salary',
+                message: 'What is the Salary of this employee?'
+            },
+            {
+                type: 'list',
+                name: 'department_id',
+                message: 'What department does this employee work?',
+                choices: dept
+            }
+        ])
+        .then((answers) => {
+            let params = [answers.title, answers.salary, answers.department_id];
+            let sql = `INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)`;
 
+            db.promise().query(sql, params)
+            .then(([rows]) => {
+                viewRole();
+            });
+        })
+    }).catch(console.log)
+}
+
+const addEmployee = () => {
+    db.promise.query('SELECT * FROM employee')
+    .then(([rows]) => {
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'first_name',
+                message: 'Please enter the employee first name?',
+                
+            }
+        ])
+    })
+}
 
